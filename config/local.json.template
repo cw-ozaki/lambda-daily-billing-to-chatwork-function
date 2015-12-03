@@ -1,0 +1,11 @@
+{
+  "token": "<%- process.env.CHATWORK_API_TOKEN %>",
+  "roomId": <%- process.env.CHATWORK_SEND_ROOM_ID %>",
+  "paymentRoleArn": "<%- process.env.ARN %>",
+  "accounts": [
+    {
+      "id": <%- process.env.ACCOUNT_ID %>,
+      "name": "<%- process.env.ACCOUNT_NAME %>"
+    }
+  ]
+}

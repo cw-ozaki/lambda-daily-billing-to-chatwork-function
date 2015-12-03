@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+- '0.10'
+- '0.12'
+sudo: false
+cache:
+  directories:
+  - node_modules
+script:
+- npm run lint
+- npm test
+before_deploy:
+- npm run archive
+deploy:
+  provider: releases
+  api_key:
+    secure: tp8YrW9CCr+7Cw5OCZhN/jRkRAvib7IXHM+tSQ7op9M7EKFPC4hfX2oxR7clRi49HNlooA46FeB7C4JFymAzq2USUhjVrVJ6MxBKUrFt5tLohKEAx8ir+PG1DxywqMDnkVuHs1toX5HO5RnXyDcA76fCBcSjfhTak+RHY1iwwa6dbblX9SG8gzkiFHN+jSdBWzUCbIwYKcyaFMkpR+hfOFVuC7lMefD4+/OytFAw8MXMqWoPcx0CikrOAVZhUhmhl/sAaY+4BzjbsUsWzQSVh3bpSZO0yT0FZt4Wl35AMtGoKS+dp7NPZ10Ov4lrrno0u+SKcuaTSpH2BH/T8PfjS827BLJncQIbyf1xvP+Tfe8bu9t7787W+ULJIFo4L0dyS9dxHwPXYhkPSuOVhi8iyWeU7ZBC3wHe/PQgEMSMPP33R+YzhpTAr1Xg9tdODh1Z4FlkhY6RyfBJfampkLOCsBRDjuB8UCt+pWS7I4032Xns/3w44HcqaXz2oOBsol+x3RFeReik/kGZtaRbPclsY4eHa5FVtQq8r1v4RgBvjxgp1EDgiNK/I+N9C3fJBtl8FBW6lAa/72t0z+U9yDctwZw5lXTvHqIHPO14o6DqG0cv/yw6gBsWFg0MTrlTprVEOHQAt6P0xiFgtOViCMU9j3Yb/+jm3X+jh+HeRzYw1KM=
+  file: dist/archive.zip
+  skip_cleanup: true
+  on:
+    repo: cw-ozaki/lambda-daily-billing-to-chatwork-function
+    branch: master
+    tags: true
