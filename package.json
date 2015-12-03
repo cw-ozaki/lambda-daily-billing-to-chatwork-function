@@ -1,6 +1,6 @@
 {
   "name": "lambda-daily-billing-to-chatwork-function",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Daily billing notification to chatwork.",
   "author": "k-kinzal",
   "license": "MIT",
