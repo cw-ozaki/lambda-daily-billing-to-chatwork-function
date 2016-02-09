@@ -73,18 +73,18 @@ exports.handler = function(event, context) {
       acc[t < p ? 0 : 1] = o;
       return acc;
     }, {});
-    var points1 = Object.keys(pointMap[0]).map(function(v) {
+    var points1 = Object.keys(pointMap[0] || {}).map(function(v) {
       return pointMap[0][v];
     });
-    var points2 = Object.keys(pointMap[1]).map(function(v) {
+    var points2 = Object.keys(pointMap[1] || {}).map(function(v) {
       return pointMap[1][v];
     });
     return {
       id: data.AccountId,
       name: data.AccountName,
-      dayBefore: points1[points1.length-1] - points1[0],
-      daily: points2[points2.length-1] - points2[0],
-      total: points2[points2.length-1]
+      dayBefore: (points1[points1.length-1] || 0) - (points1[0] || 0),
+      daily: (points2[points2.length-1] || 0) - (points2[0] || 0),
+      total: (points2[points2.length-1] || 0)
     };
     
   }).then(function(billingInfos) {
